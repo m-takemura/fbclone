@@ -1,0 +1,124 @@
+// Place all the styles related to the topics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+img{
+  max-width: 100%;
+}
+
+
+.topics{
+  .wrapper {
+    margin-bottom: 74px;
+  //   padding: 20px 20px 20px 35px;
+    .row {
+      // border : 1px solid #ccc;
+      // padding: 20px;
+      text-align: left;
+      word-wrap: break-word;
+    }
+
+    .post-block{
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    .tweet-block{
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .timeline{
+      margin:0px;
+      padding:15px;
+      border : 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+  input[type="submit"].btn-block{
+    margin: 15px 0;
+  }
+
+  .container{
+    padding-bottom: 85px;
+  }
+
+  textarea{
+      width: 100%;
+  }
+
+  .blog-author {
+    border-bottom: 1px solid #ccc;
+    img{
+      width: 50px;
+      height: auto;
+    }
+  }
+
+  .blog-picture{
+    img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .blog-content{
+    padding: 10px 20px 40px 20px;
+  }
+}
+
+ .navbar-default {
+   border: 0;
+ }
+
+ .navbar {
+   background-color: transparent;
+   color: #ffffff;
+   margin-bottom: 0px;
+ }
+
+ .navbar-default {
+   background-color: #1e4682;
+   border-radius: 0;
+   .navbar-brand {
+     color: #ffffff;
+     &:hover{
+       color: #ffffff;
+     }
+   }
+   .navbar-nav > li > a {
+     color: #ffffff;
+     &:hover, &:focus {
+       color: #ffffff;
+     }
+   }
+   .navbar-nav > .open > a {
+     background-color: transparent;
+     color: #ffffff;
+     &:hover, &:focus{
+       background-color: transparent;
+       color: #ffffff;
+     }
+   }
+ }
+ @media (max-width: 767px) {
+ .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+     color: #ffffff;
+     text-align: center;
+     &:hover, &:focus {
+       color: #ffffff;
+     }
+   }
+   .navbar-default .navbar-toggle {
+     background-color: transparent;
+     &:hover, &:focus {
+       background-color: transparent;
+     }
+   }
+ }
+
+ .navbar-collapse {
+   background-color: #1e4682;
+ }
