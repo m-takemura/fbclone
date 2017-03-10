@@ -43,7 +43,15 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem 'letter_opener_web'
+end
+
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'twitter-bootstrap-rails'
+gem 'dotenv'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'

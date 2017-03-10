@@ -9,6 +9,7 @@ class TopicsController < ApplicationController
     else
       @topic=Topic.new
     end
+    @comment=Comment.new
   end
 
   def create

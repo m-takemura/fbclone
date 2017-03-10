@@ -15,26 +15,38 @@
 
           <% @topics.each do |topic| %>
             <div class="row tweet-block">
-              <div class="blog-author">
+              <div class="blog-author clearfix">
                 <%= profile_img(topic.user) %>
-                <%= topic.user.name %><br>
-                <%= topic.created_at %>
+                <div class="name-and-date">
+                  <%= topic.user.name %><br>
+                  <%= topic.created_at %>
+                </div>
+              </div>
+
+              <div class="blog-content">
+                <%= simple_format(topic.content) %>
               </div>
 
               <div class="blog-picture">
                 <%= topic_img(topic)if topic_img(topic) %>
               </div>
 
-              <div class="blog-content">
-                <p><%= simple_format(topic.content) %></p>
-                <% if topic.user_id=current_user.id %>
-                  <div class="right">
-                      <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success pull-right' %>
-                      <%= link_to '削除', topic_path(topic.id), method: :delete, data: {confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-default btn-sm btn-danger pull-right' %>
-                  </div>
-                <% end %>
+              <% if topic.user_id=current_user.id %>
+              <div class="clearfix">
+                <!-- <div class="right"> -->
+                    <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success pull-right' %>
+                    <%= link_to '削除', topic_path(topic.id), method: :delete, data: {confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-default btn-sm btn-danger pull-right' %>
+                <!-- </div> -->
               </div>
+              <% end %>
 
+              <!-- 以下コメント一覧/フォーム -->
+              <div>
+                <div id="comments_area_<%= topic.id.to_s %>">
+                  <%= render partial: 'comments/index', locals: { comments: topic.comments, topic: topic } %>
+                </div>
+                <%= render partial: 'comments/form', locals: { comment: @comment, topic: topic } %>
+              </div>
             </div>
           <% end %>
         <!-- </div> -->
