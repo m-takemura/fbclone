@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>ユーザー詳細</h2>
+  <div class="row">
+    <div class="wrapper col-md-2 col-md-offset-5 profile">
+      <%= profile_img(@user) %><br>
+      <%= @user.name %><br>
+      <%= @user.email %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="wrapper col-md-3 col-md-offset-3 profile">
+      <h4>フォローしているユーザー</h4>
+      <% @user.followed_users.each do | followed_user | %>
+        <%= profile_img(followed_user) %><br>
+        <%= followed_user.name %><br>
+        <%= followed_user.email %><br><br>
+      <% end %>
+    </div>
+
+    <div class="wrapper col-md-3 profile">
+      <h4>フォロワー</h4>
+      <% @user.followers.each do | follower | %>
+        <%= profile_img(follower) %><br>
+        <%= follower.name %><br>
+        <%= follower.email %><br><br>
+      <% end %>
+    </div>
+  </div>
+
+</div>

@@ -1,13 +1,12 @@
-<ul>
+
   <% comments.each do |comment| %>
     <% unless comment.id.nil? %>
-      <li>
-        <p class="left"><%= comment.user.name %> <%= comment.content %></p>
-        <% if current_user.id == comment.user.id %>
-        <p class="right">
-        </p>
-        <% end %>
-      </li>
+    <div class="comment-individual">
+      <div class="comment-img-trim box"><%=profile_img(comment.user) %></div>
+      <p class="left"><%= comment.user.name %> <%= comment.content %></p>
+      <% if current_user.id == comment.user.id %>
+        <p class="right"></p>
+      <% end %>
+    </div>
     <% end %>
   <% end %>
-</ul>

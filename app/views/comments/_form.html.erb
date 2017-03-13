@@ -1,14 +1,14 @@
 <%= form_for([topic, comment],remote: true, remote: true)do |f| %>
   <%= f.error_messages! %>
   <%= f.hidden_field :topic_id, :value=>topic.id.to_s %>
-  <div class="boxContainer comment-block clearfix">
-    <div class="box">
-      <%=profile_img(current_user) %>
+  <div class="boxContainer comment-form clearfix">
+    <div class="image-box">
+      <div class="comment-img-trim"><%=profile_img(current_user) %></div>
     </div>
-    <div class="field box">
+    <div class="field form-box">
       <%=f.text_field :content,class:"form-control comment-area", placeholder:"コメントする…" %>
     </div>
-    <div class="actions box">
+    <div class="actions">
       <%= f.submit "投稿", class:"btn btn-primary button-sm btn-default pull-right" %>
     </div>
   </div>

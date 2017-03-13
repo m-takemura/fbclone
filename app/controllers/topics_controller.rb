@@ -3,7 +3,8 @@ class TopicsController < ApplicationController
   before_action :set_topic, only:[:edit, :update, :destroy]
 
   def index
-    @topics=Topic.order("created_at desc")
+    # @topics=Topic.order("created_at desc")
+    @topics=Topic.my_topics(current_user)
     if params[:back]
       @topic=Topic.new(topics_params)
     else

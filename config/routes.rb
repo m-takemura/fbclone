@@ -6,13 +6,20 @@ Rails.application.routes.draw do
   }
 
   root 'topics#index'
-  # get 'topics' => 'topics#index'
+
   resources :topics, only:[:index, :create, :edit, :update, :destroy] do
     resources :comments
 
     collection do
       post :confirm
     end
+  end
+
+  resources :users, only: [:index, :show]
+  resources :relationships, only: [:create, :destroy]
+
+  resources :conversations do
+    resources :messages
   end
 
   if Rails.env.development?

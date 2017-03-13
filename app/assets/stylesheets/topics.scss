@@ -5,8 +5,30 @@ img{
   max-width: 100%;
 }
 
+/* 高さに合わせてリサイズ、はみ出た分をトリミング */
+.user-trim {
+  height: 50px;
+  width:50px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  img {
+    position: relative;
+    // top: 50%;
+    // left: 50%;
+    width: auto;
+    height: 50px;
+    // -webkit-transform: translate(-50%, -50%);
+    // -ms-transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
+  }
+}
+
 .box{
   float:left;
+}
+
+.box-right{
+  float:right;
 }
 
 .boxContainer{
@@ -56,13 +78,14 @@ img{
   }
 
   .blog-author {
-    border-bottom: 1px solid #ccc;
-    img{
-      width: 50px;
-      height: auto;
-      float: left;
-      margin-right: 10px;
-    }
+    padding: 10px;
+    // border-bottom: 1px solid #ccc;
+    // img{
+    //   width: 50px;
+    //   height: auto;
+    //   float: left;
+    //   margin-right: 10px;
+    // }
   }
 
   .blog-picture{
@@ -77,24 +100,46 @@ img{
     padding: 5px;
     font-size: medium;
   }
-  .new_comment{
-    .comment-block{
-      img{
-        width: 50px;
-        height: auto;
-        float: left;
-        margin-right: 10px;
-      }
-      // .comment-button{
-      //   float:right;
-      // }
-      // .field{
-      //   .comment-area{
-      //     width: auto;
-      //   }
-      // }
-    }
+
+}
+
+//コメント一覧とコメント入力欄全体
+.comment-block{
+  border-top: 1px solid #ccc;
+}
+
+//コメント欄ユーザー画像
+.comment-img-trim {
+  height: 30px;
+  width:30px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  img {
+    position: relative;
+    width: auto;
+    height: 30px;
   }
+}
+
+//コメント一件ごと
+.comment-individual{
+  padding: 5px 10px;
+  background-color: #eeeeee;
+}
+
+//コメント入力欄
+.comment-form{
+  padding: 5px 10px;
+  background-color: #eeeeee;
+  .image-box{
+    float: left;
+  }
+  .form-box{
+    // float:left;
+  }
+  // .btn-box{
+  //   float: right;
+  // }
 }
 
 .clearfix:after{
@@ -156,3 +201,7 @@ img{
  .navbar-collapse {
    background-color: #1e4682;
  }
+
+.btn {
+  border-radius: 2px;
+}

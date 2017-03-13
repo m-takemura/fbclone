@@ -47,11 +47,12 @@ group :development do
   gem 'letter_opener_web'
 end
 
+gem 'pry-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'twitter-bootstrap-rails'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
