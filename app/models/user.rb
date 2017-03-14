@@ -69,4 +69,9 @@ class User < ActiveRecord::Base
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)
   end
+
+  #フォローしているユーザーのidを返す
+  def followed_user_id
+    relationships.all.pluck(:followed_id)
+  end
 end

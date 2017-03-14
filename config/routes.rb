@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root 'topics#index'
 
-  resources :topics, only:[:index, :create, :edit, :update, :destroy] do
+  resources :topics, only:[:index, :show, :create, :edit, :update, :destroy] do
     resources :comments
 
     collection do
@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+
+  # resources :notifications, only: [:index]
+  get "notifications/index"
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

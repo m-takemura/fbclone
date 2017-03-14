@@ -8,7 +8,7 @@ class Topic < ActiveRecord::Base
   # 渡されたユーザーによる投稿と、渡されたユーザーが
   # フォローしているユーザーによる投稿を返します
   def self.my_topics(user)
-    user_ids=user.relationships.all.pluck(:followed_id)
+    user_ids = user.followed_user_id
     user_ids << user.id
     # binding.pry
     where(user_id: user_ids).order("created_at desc")

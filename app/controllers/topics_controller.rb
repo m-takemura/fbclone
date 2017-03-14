@@ -1,9 +1,8 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_topic, only:[:edit, :update, :destroy]
+  before_action :set_topic, only:[:edit, :show, :update, :destroy]
 
   def index
-    # @topics=Topic.order("created_at desc")
     @topics=Topic.my_topics(current_user)
     if params[:back]
       @topic=Topic.new(topics_params)
@@ -23,10 +22,20 @@ class TopicsController < ApplicationController
     end
   end
 
+  def show
+    Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
+    @comment=Comment.new
+  end
+
   def edit
   end
 
   def update
+    if @topic.update(topics_params)
+      redirect_to topics_path, notice:'投稿を更新しました！'
+    else
+      render 'edit'
+    end
   end
 
   def destroy

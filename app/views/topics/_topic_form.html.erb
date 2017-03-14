@@ -1,0 +1,42 @@
+<div class="row tweet-block">
+  <div class="blog-author clearfix">
+    <div class="media">
+      <div class="pull-left">
+        <div class="user-trim"><%= profile_img(topic.user) %></div>
+      </div>
+      <div class="media-body">
+        <!-- <div class="name-and-date"> -->
+          <h5 class="media-heading"><%= topic.user.name %></h5>
+          <%= topic.posted_date %>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-content">
+    <%= simple_format(topic.content) %>
+  </div>
+
+  <div class="blog-picture">
+    <%= topic_img(topic)if topic_img(topic) %>
+  </div>
+
+  <% if topic.user_id == current_user.id %>
+  <div class="boxContainer">
+    <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success pull-right blog-button' %>
+  <!-- </div> -->
+  <!-- <div class="pull-right"> -->
+    <%= link_to '削除', topic_path(topic.id), method: :delete, data: {confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-default btn-sm btn-danger pull-right blog-button' %>
+  </div>
+  <% end %>
+
+  <!-- 以下コメント一覧/フォーム -->
+  <div class="comment-block">
+    <div id="comments_area_<%= topic.id.to_s %>">
+      <%= render partial: 'comments/index', locals: { comments: topic.comments, topic: topic } %>
+    </div>
+    <div>
+      <%= render partial: 'comments/form', locals: { comment: comment, topic: topic } %>
+    </div>
+  </div>
+</div>

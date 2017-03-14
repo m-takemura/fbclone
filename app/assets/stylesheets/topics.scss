@@ -25,6 +25,9 @@ img{
 
 .box{
   float:left;
+  // textarea{
+  //   width: 100px
+  // }
 }
 
 .box-right{
@@ -103,6 +106,10 @@ img{
 
 }
 
+.blog-button{
+  margin: 5px;
+}
+
 //コメント一覧とコメント入力欄全体
 .comment-block{
   border-top: 1px solid #ccc;
@@ -135,7 +142,7 @@ img{
     float: left;
   }
   .form-box{
-    // float:left;
+    float:left;
   }
   // .btn-box{
   //   float: right;

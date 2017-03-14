@@ -7,59 +7,22 @@
             <%= form_for(@topic) do |f| %>
               <%= f.file_field :picture %>
               <%= f.hidden_field :picture_cache %>
-              <div class=bocContainer>
-                <div class="box">
+
+              <div class="media">
+                <div class="pull-left">
                   <div class="user-trim"><%= profile_img(current_user) %></div>
                 </div>
-                <div>
+                <div class="media-body">
                   <%= f.text_area :content, class:"form-control", placeholder:"今なにしてる？" %>
                 </div>
               </div>
+
               <br>
               <%= f.submit "投稿する", class:"btn btn-default btn-sm btn-primary pull-right"%>
             <% end %>
           </div>
-
           <% @topics.each do |topic| %>
-              <div class="row tweet-block">
-                <div class="blog-author clearfix boxContainer">
-                  <div class="box">
-                    <div class="user-trim"><%= profile_img(topic.user) %></div>
-                  </div>
-                  <div class="box">
-                    <div class="name-and-date">
-                      <%= topic.user.name %><br>
-                      <%= topic.posted_date %>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="blog-content">
-                  <%= simple_format(topic.content) %>
-                </div>
-
-                <div class="blog-picture">
-                  <%= topic_img(topic)if topic_img(topic) %>
-                </div>
-
-                <% if topic.user_id=current_user.id %>
-                <div class="clearfix">
-                  <!-- <div class="right"> -->
-                      <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success pull-right' %>
-                      <%= link_to '削除', topic_path(topic.id), method: :delete, data: {confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-default btn-sm btn-danger pull-right' %>
-                  <!-- </div> -->
-                </div>
-                <% end %>
-
-                <!-- 以下コメント一覧/フォーム -->
-                <div class="comment-block">
-                  <div id="comments_area_<%= topic.id.to_s %>">
-                    <%= render partial: 'comments/index', locals: { comments: topic.comments, topic: topic } %>
-                  </div>
-                  <%= render partial: 'comments/form', locals: { comment: @comment, topic: topic } %>
-                </div>
-              </div>
-
+            <%= render 'topic_form', topic: topic, comment: @comment  %>
           <% end %>
         <!-- </div> -->
     </div>
