@@ -1,2 +1,3 @@
 $("#comments_area_" + "<%= @comment.topic_id.to_s %>").html("<%= j(render 'comments/index', { comments: @comment.topic.comments, topic: @comment.topic }) %>")
+$('#error_explanation_' + "<%= @comment.topic_id.to_s %>").remove();
 $(':text').val('')

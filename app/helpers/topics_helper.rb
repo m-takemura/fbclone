@@ -6,4 +6,12 @@ module TopicsHelper
       return ''
     end
   end
+
+  def show_form?
+    if action_name == 'show'
+      return true
+    else
+      return false
+    end
+  end
 end

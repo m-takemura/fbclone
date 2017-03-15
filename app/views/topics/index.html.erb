@@ -5,18 +5,16 @@
         <!-- <div class="timeline"> -->
           <div class="row post-block">
             <%= form_for(@topic) do |f| %>
-              <%= f.file_field :picture %>
-              <%= f.hidden_field :picture_cache %>
-
               <div class="media">
                 <div class="pull-left">
                   <div class="user-trim"><%= profile_img(current_user) %></div>
                 </div>
                 <div class="media-body">
                   <%= f.text_area :content, class:"form-control", placeholder:"今なにしてる？" %>
+                  <%= f.file_field :picture %>
+                  <%= f.hidden_field :picture_cache %>
                 </div>
               </div>
-
               <br>
               <%= f.submit "投稿する", class:"btn btn-default btn-sm btn-primary pull-right"%>
             <% end %>

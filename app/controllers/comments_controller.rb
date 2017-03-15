@@ -10,19 +10,9 @@ class CommentsController < ApplicationController
     # クライアント要求に応じてフォーマットを変更
     respond_to do |format|
       if @comment.save
-        # format.html { redirect_to blog_path(@topic), notice: 'コメントを投稿しました。' }
-        # unless @comment.topic.user_id == current_user.id
-        #   Pusher.trigger("user_#{@comment.topic.user_id}_channel", 'comment_created', {
-        #     message: 'あなたの投稿にコメントが付きました'
-        #   })
-        #   Pusher.trigger("user_#{@comment.topic.user_id}_channel", 'notification_created', {
-        #     unread_counts: Notification.where(user_id: @comment.topic.user.id, read: false).count
-        #   })
-        # end
-
         format.js {render :index}
       else
-        # format.html { render :new }
+        format.js {render :error}
       end
     end
   end

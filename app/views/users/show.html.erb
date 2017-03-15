@@ -5,20 +5,28 @@
       <div class="row profile section-box ">
         <h4>フォローしているユーザー</h4>
         <% @user.followed_users.each do | followed_user | %>
-          <div class="user-trim"><%= profile_img(followed_user) %></div>
-          <!-- <%= followed_user.name %><br><br> -->
-          <%= link_to followed_user.name, followed_user %><br><br>
-          <!-- <%= followed_user.email %><br><br> -->
+          <div class="media">
+            <div class="pull-left">
+              <div class="user-trim"><%= profile_img(followed_user) %></div>
+            </div>
+            <div class="media-body user-body">
+              <%= link_to followed_user.name, followed_user %>
+            </div>
+          </div>
         <% end %>
       </div>
 
       <div class="row profile section-box ">
         <h4>フォロワー</h4>
         <% @user.followers.each do | follower | %>
-          <div class="user-trim"><%= profile_img(follower) %></div>
-          <!-- <%= follower.name %><br><br> -->
-          <%= link_to follower.name, follower %><br><br>
-          <!-- <%= follower.email %><br><br> -->
+          <div class="media">
+            <div class="pull-left">
+              <div class="user-trim"><%= profile_img(follower) %></div>
+            </div>
+            <div class="media-body user-body">
+              <%= link_to follower.name, follower %>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
@@ -29,11 +37,12 @@
           <a class="pull-left" href="#">
             <div class="my-profile-trim"><%= profile_img(@user) %></div>
           </a>
-          <div class="media-body">
+          <div class="media-body user-body">
             <h4 class="media-heading"><%= @user.name %></div>
-            <%= @user.email %>
+            <div class="user-body"><%= @user.email %></div>
           </div>
         </div>
+        
       </div>
 
     </div>

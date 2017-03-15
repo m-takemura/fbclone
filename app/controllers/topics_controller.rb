@@ -45,7 +45,7 @@ class TopicsController < ApplicationController
 
   private
     def topics_params
-      params.require(:topic).permit(:content, :picture)
+      params.require(:topic).permit(:content, :picture, :picture_cache)
     end
 
     #idをキーとしてレコードを取得する

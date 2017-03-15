@@ -1,10 +1,22 @@
 <% if user.id != current_user.id %>
-    <div class="container-child col-md-2 col-sm-4 col-xs-6 profile">
-      <div class="item">
-        <div class="user-trim"><%= profile_img(user) %></div><br>
-        <%= link_to user.name, user %>
-        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+    <!-- <div class="container-child col-md-2 col-sm-4 col-xs-6 profile"> -->
+    <div class="row">
+      <div class="wrapper col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+        <div class="section-box">
+          <div class="media">
+            <div class="pull-left">
+              <div class="user-trim"><%= profile_img(user) %></div><br>
+            </div>
+            <div class="media-body user-body">
+              <%= link_to user.name, user %>
+              <br>
+              <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+            </div>
+            <div class="pull-right">
+              <%= render partial: 'follow_form', locals: { user: user } if signed_in?   %>
+            </div>
+          </div>
+        </div>
       </div>
-      <%= render partial: 'follow_form', locals: { user: user } if signed_in?   %>
     </div>
 <% end %>

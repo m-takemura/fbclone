@@ -1,33 +1,53 @@
-<% if @over_ten %>
-  <%= link_to '以前のメッセージ', '?m=all' %>
-<% end %>
-
-<div class="ui segment">
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <% user = User.find(message.user_id) %>
-      <div class="item">
-        <div class="content">
-          <div class="header"><strong><%= user.name %></strong> <%= message.message_time %></div>
-          <div class="list">
-            <div class="item">
-              <i class="right triangle icon"></i>
-              <%= message.body %>
-            </div>
-          </div>
+<div class="container">
+  <div class="row">
+    <div class="wrapper col-md-4 col-md-offset-4">
+      <h2>メッセージ</h2>
+      <% target=@conversation.target_user(current_user) %>
+      <!-- <div class="media section-box">
+        <div class="pull-left">
+          <div class="user-trim"><%= profile_img(target) %></div><br>
         </div>
+        <div class="media-body user-body">
+          <%= target.name %>
+        </div> -->
+      <div>
+        to:<%= target.name %><br><br>
       </div>
-    <% end %>
-  <% end %>
+      <!-- </div> -->
+
+      <% if @over_ten %>
+        <%= link_to '以前のメッセージ', '?m=all' %>
+      <% end %>
+
+      <div class="ui segment">
+        <% @messages.each do |message| %>
+          <% if message.body %>
+            <% user = User.find(message.user_id) %>
+            <div class="item">
+              <div class="content">
+                <div class="header"><strong><%= user.name %></strong> <%= message.message_time %></div>
+                <div class="list">
+                  <div class="item">
+                    <i class="right triangle icon"></i>
+                    <%= message.body %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+        <div class="field">
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+          <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+        <div class="pull-right">
+          <%= f.submit "メッセージを送る" ,class:"btn btn-sm btn-primary" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-  <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
-  </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "メッセージを送る" %>
-  </div>
-
-<% end %>
