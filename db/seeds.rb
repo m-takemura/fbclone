@@ -29,3 +29,15 @@ users.each do |f|
                content: content,
                )
 end
+
+topics=Topic.all
+topics.each do |f|
+  topic_id=f.id
+  user_id=User.where('id>=?',rand(User.first.id..User.last.id)).first.id
+  content=Faker::Lorem.sentence
+  Comment.create!(
+               topic_id: topic_id,
+               user_id: user_id,
+               content: content,
+               )
+end

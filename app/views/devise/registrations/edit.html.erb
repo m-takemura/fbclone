@@ -38,13 +38,13 @@
         </div>
         <br>
 
-      <% end %>
 
-      <div class="field">
-        <!--<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />-->
-        <%= f.password_field :current_password, autocomplete: "off" , class:"form-control", placeholder:"現在のパスワード" %>
-      </div>
-      <br>
+        <div class="field">
+          <!--<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />-->
+          <%= f.password_field :current_password, autocomplete: "off" , class:"form-control", placeholder:"現在のパスワード" %>
+        </div>
+        <br>
+      <% end %>
 
       <div class="field">
         <%= profile_img(@user)if profile_img(@user) %>

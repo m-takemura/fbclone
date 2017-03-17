@@ -53,7 +53,16 @@ class User < ActiveRecord::Base
   end
 
   def self.create_unique_string
-  SecureRandom.uuid
+    SecureRandom.uuid
+  end
+
+  def update_with_password(params, *options)
+    if provider.blank?
+      super
+    else
+      params.delete :current_password
+      update_without_password(params, *options)
+    end
   end
 
   def follow!(other_user)
