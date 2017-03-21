@@ -15,7 +15,8 @@ class Topic < ActiveRecord::Base
     where(user_id: user_ids).order("created_at desc")
   end
 
-  def posted_date
-    created_at.strftime("%-m月%-d日 %-l:%M")
-  end
+  # def posted_date
+  #   # created_at.strftime("%-m月%-d日 %-l:%M %p")
+  #   date_time_layout(created_at)
+  # end
 end

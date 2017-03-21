@@ -14,6 +14,10 @@ module ApplicationHelper
     end
     image_tag(img_url, alt: user.name)
   end
+
+  def date_time_layout(date)
+    date.strftime("%-m月%-d日 %-l:%M %p")
+  end
 end
 
 module ActionView

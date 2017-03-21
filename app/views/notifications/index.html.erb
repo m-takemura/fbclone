@@ -17,7 +17,7 @@
             <%= notification.comment.user.try(:name) %>さんが
             <%= link_to "あなたの投稿",topic_path(notification.comment.topic,notification_id: notification.id) %>にコメントしました。
           </p>
-          <p><%= notification.created_at %></p>
+          <p><%= date_time_layout notification.created_at %></p>
             <!-- </li> -->
         <% end %>
       <% end %>

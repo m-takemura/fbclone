@@ -7,7 +7,7 @@
       <div class="media-body">
         <!-- <div class="name-and-date"> -->
           <h5 class="media-heading"><%= topic.user.name %></h5>
-          <%= topic.posted_date %>
+          <%= date_time_layout topic.created_at %>
         <!-- </div> -->
       </div>
     </div>
